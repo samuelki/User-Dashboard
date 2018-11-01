@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="" href="{% static 'users/css/style.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="container justify-content-between">
+            <h4>User Dashboard</h4>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if 'id' not in request.session %}
+                    <a class="nav-link" href="/login">Sign in</a>
+                {% else %}
+                    <a class="nav-link" href="/logout">Log off</a>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Welcome to the User Dashboard</h1>
+            <p>We're going to build a cool application using a MVC framework!</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/register">Start</a>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Manage Users</h5>
+                <p>Using this application, you'll learn how to add, remove, and edit users for the application.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Leave Messages</h5>
+                <p>Users will be able to leave a message to another user using this application.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Edit User Information</h5>
+                <p>Admins will be able to edit another user's information (email address, first name, last name, etc.).</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

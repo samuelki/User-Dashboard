@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="" href="{% static 'users/css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container justify-content-between">
+            <h4>User Dashboard</h4>
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+                <a class="nav-link" href="/users/show/{{request.session.id}}">Profile</a>
+            <ul class="navbar-nav ml-auto">
+                {% if 'id' not in request.session %}
+                    <a class="nav-link" href="/login">Sign in</a>
+                {% else %}
+                    <a class="nav-link" href="/logout">Log off</a>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <h4>Are you sure you want to delete the following user?</h4>
+        <div class="info">
+            <li><span class="title">ID:</span> {{ user.id }}</li>
+            <li><span class="title">Name:</span> {{ user.first_name}} {{ user.last_name }}</li>
+            <li><span class="title">Email:</span> {{ user.email }}</li>
+            <li><span class="title">User Level:</span> {% if user.user_level == 9 %}Admin{% else %}Normal{% endif %}</li>
+        </div>
+    
+        <a href="/users/delete/{{ user.id }}" class="btn btn-danger">Yes, Delete this user</a>
+        <a href="/dashboard" class="btn btn-primary">No, go back</a>
+
+    </div>
+</body>
+</html>

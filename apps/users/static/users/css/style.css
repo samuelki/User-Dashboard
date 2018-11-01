@@ -1,0 +1,76 @@
+.navigate{
+    border-bottom: 2px solid black;
+    margin-bottom: 15px;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+li {
+    list-style: none;
+}
+
+.messages {
+    margin: 0;
+    padding: 0;
+}
+
+li.error {
+    color: red;
+}
+
+li.success {
+    color: green;
+}
+
+h4 {
+    margin-right: 20px;
+}
+
+span.title {
+    display: inline-block;
+    text-align: left;
+    width: 130px;
+}
+
+.info {
+    margin-bottom: 15px;
+}
+
+.post_message form textarea, .post_comment form textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    height: 4rem;
+    resize: vertical;
+}
+
+#messages .comments {
+    margin-left: 2rem;
+}
+
+#messages .posted_at {
+    float: right;
+    margin: 1rem 0;
+    line-height: 1.3rem;
+    font-size: 0.8rem;
+}
+
+#messages h5 {
+    display: inline-block;
+    margin: 0.5rem 0;
+    line-height: 1.3rem;
+}
+
+.container .row {
+    margin: 30px 0;
+}
+
+.container .row .col {
+    padding-right: 100px;
+}
