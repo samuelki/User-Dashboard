@@ -1,3 +1,10 @@
 # User-Dashboard
 
-This was a Coding Dojo project. The site allows users to register and log in to exchange messages/comments. Regular users are able to edit their profiles. Admins are able to add/delete/edit users. Site is (slightly) styled via Bootstrap and built in Django.
+Social networking site that allows users to exchange messages and comments on other users' walls. Users register and login with validations. Admins are able to add/delete/edit any user. Normal users are able to edit their profiles. 
+
+Technologies:
+- Python/Django
+- HTML5/CSS3
+- SQLite
+- AWS
+- Bootstrap
