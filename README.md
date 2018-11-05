@@ -8,3 +8,26 @@ Technologies:
 - SQLite
 - AWS
 - Bootstrap
+
+__Screenshots__
+
+Welcome
+![Welcome](/screenshots/welcome.png?raw=true)
+
+Register
+![Register](/screenshots/register.png?raw=true)
+
+Login
+![Login](/screenshots/login.png?raw=true)
+
+Admin's Dashboard
+![Dashboard](/screenshots/dashboard.png?raw=true)
+
+Edit User
+![Edit](/screenshots/edit.png?raw=true)
+
+Wall Part 1
+![Wall1](/screenshots/wall_1.png?raw=true)
+
+Wall Part 2
+![Wall2](/screenshots/wall_2.png?raw=true)
