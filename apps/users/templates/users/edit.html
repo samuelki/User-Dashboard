@@ -13,7 +13,11 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark navigate">
         <div class="container justify-content-between">
             <h4 style="color: white">User Dashboard</h4>
-                <a class="nav-link" href="/dashboard">Dashboard</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+            </ul>
                 <ul class="navbar-nav ml-auto">
                     <a class="nav-link" href="/users/show/{{request.session.id}}">{{ logged_user.first_name }} {{ logged_user.last_name }}</a>
                 {% if 'id' not in request.session %}
