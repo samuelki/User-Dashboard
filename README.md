@@ -12,22 +12,22 @@ Technologies:
 __Screenshots__
 
 Welcome
-![Welcome](https://raw.github.com/samuelki/User-Dashboard/master/screenshots/welcome.PNG)
+![Welcome](/screenshots/welcome.PNG)
 
 Register
-![Register](https://raw.github.com/samuelki/User-Dashboard/master/screenshots/register.PNG)
+![Register](/screenshots/register.PNG)
 
 Login
-![Login](https://raw.github.com/samuelki/User-Dashboard/master/screenshots/login.PNG)
+![Login](/screenshots/login.PNG)
 
 Admin's Dashboard
-![Dashboard](https://raw.github.com/samuelki/User-Dashboard/master/screenshots/dashboard.PNG)
+![Dashboard](/screenshots/dashboard.PNG)
 
 Edit User
-![Edit](https://raw.github.com/samuelki/User-Dashboard/master/screenshots/edit.PNG)
+![Edit](/screenshots/edit.PNG)
 
 Wall Part 1
-![Wall1](https://raw.github.com/samuelki/User-Dashboard/master/screenshots/wall_1.PNG)
+![Wall1](/screenshots/wall_1.PNG)
 
 Wall Part 2
-![Wall2](https://raw.github.com/samuelki/User-Dashboard/master/screenshots/wall_2.PNG)
+![Wall2](/screenshots/wall_2.PNG)
