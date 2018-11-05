@@ -10,12 +10,12 @@
     <link rel="stylesheet" type="" href="{% static 'users/css/style.css' %}">
 </head>
 <body>
-    <nav class="navbar navigate">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark navigate">
         <div class="container justify-content-between">
-            <h4>User Dashboard</h4>
+            <h4 style="color: white">User Dashboard</h4>
                 <a class="nav-link" href="/dashboard">Dashboard</a>
-                <a class="nav-link" href="/users/show/{{request.session.id}}">Profile</a>
-            <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
+                    <a class="nav-link" href="/users/show/{{request.session.id}}">{{ logged_user.first_name }} {{ logged_user.last_name }}</a>
                 {% if 'id' not in request.session %}
                     <a class="nav-link" href="/login">Sign in</a>
                 {% else %}
@@ -32,7 +32,7 @@
         {% elif request.session.user_level == 0 %}
             <h4>All Users</h4>
         {% endif %}
-        <table class="table table-stripe">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -59,7 +59,7 @@
                     {% endif %}
                     {% if request.session.user_level == 9 %}
                         <td>
-                            <a href="/users/edit/{{user.id}}">Edit</a> | 
+                            <a href="/users/edit/{{user.id}}">Edit</a> 
                             <a href="/users/destroy/{{user.id}}">Remove</a>
                         </td>
                     {% endif %}

@@ -10,12 +10,12 @@
     <link rel="stylesheet" type="" href="{% static 'users/css/style.css' %}">
 </head>
 <body>
-    <nav class="navbar navigate">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark navigate">
         <div class="container justify-content-between">
-            <h4>User Dashboard</h4>
+            <h4 style="color: white">User Dashboard</h4>
                 <a class="nav-link" href="/dashboard">Dashboard</a>
-                <a class="nav-link" href="/users/show/{{request.session.id}}">Profile</a>
-            <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
+                    <a class="nav-link" href="/users/show/{{request.session.id}}">{{ logged_user.first_name }} {{ logged_user.last_name }}</a>
                 {% if 'id' not in request.session %}
                     <a class="nav-link" href="/login">Sign in</a>
                 {% else %}
@@ -36,7 +36,6 @@
         {% endif %}
         <div class="row">
             <div class="col">
-                <h5>Edit Information</h5>
                 <form action="/users/edit" method="POST">
                     {% csrf_token %}
                     <div class="form-group">
@@ -65,7 +64,6 @@
                 </form>
             </div>
             <div class="col">
-                <h5>Change Password</h5>
                 <form action="/users/edit" method="POST">
                     {% csrf_token %}
                     <div class="form-group">
@@ -73,7 +71,7 @@
                         <input type="password" name="password" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="confirm_pw">Password Confirmation:</label>
+                        <label for="confirm_pw">New Password Confirmation:</label>
                         <input type="password" name="confirm_pw" class="form-control">
                     </div>
                     <input type="hidden" name="id" value="{{user.id}}">
@@ -81,17 +79,15 @@
                 </form>
             </div>
         </div>
-        {% if request.session.id == user.id %}
-            <form action="/users/edit" method="POST">
-                {% csrf_token %}
-                <h3>Edit Description</h3>
-                <div class="form-group">
-                    <textarea name="description" cols="80" rows="8" class="form-control"></textarea>
-                    <input type="hidden" name="id" value="{{user.id}}">
-                </div>
-                <input type="submit" name="submit" value="Save Description" class="btn">
-            </form>
-        {% endif %}
+        <form action="/users/edit" method="POST">
+            {% csrf_token %}
+            <h3>Edit Description</h3>
+            <div class="form-group">
+                <textarea name="description" cols="80" rows="8" class="form-control"></textarea>
+                <input type="hidden" name="id" value="{{user.id}}">
+            </div>
+            <input type="submit" name="submit" value="Save Description" class="btn">
+        </form>
         {% endfor %}
     </div>
 </body>

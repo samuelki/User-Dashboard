@@ -10,12 +10,12 @@
     <link rel="stylesheet" type="" href="{% static 'users/css/style.css' %}">
 </head>
 <body>
-    <nav class="navbar navigate">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark navigate">
         <div class="container justify-content-between">
-            <h4>User Dashboard</h4>
+            <h4 style="color: white">User Dashboard</h4>
                 <a class="nav-link" href="/dashboard">Dashboard</a>
-                <a class="nav-link" href="/users/show/{{request.session.id}}">Profile</a>
-            <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
+                    <a class="nav-link" href="/users/show/{{request.session.id}}">{{ logged_user.first_name }} {{ logged_user.last_name }}</a>
                 {% if 'id' not in request.session %}
                     <a class="nav-link" href="/login">Sign in</a>
                 {% else %}
@@ -28,7 +28,7 @@
 
     <div class="container">
         <div class="info">
-            <h3>{{user.first_name}} {{user.last_name}}</h3>
+            <h3 class="username">{{user.first_name}} {{user.last_name}}</h3>
             <li><span class="title">Registered at:</span> {{user.created_at}}</li>
             <li><span class="title">User ID:</span> {{user.id}}</li>
             <li><span class="title">Email Address:</span> {{user.email}}</li>
@@ -42,44 +42,42 @@
                     {% csrf_token %}
                     <h5>Leave a message for {{user.first_name}}</h5>
                     <textarea name="message"></textarea>
-                    <input type="submit" value="Post">
+                    <div class="text-right">
+                        <input type="submit" value="Post" class="post">
+                    </div>
                 </form>
             </div>
             {% endif %}
     
+            {% for message in message_data %}
             <div class="show_messages">
-                {% if not message_data %}
-                    <p>There are no messages</p>
-                {% else %}
-                    {% for message in message_data %}
-                    <h5>
-                        <a href="/users/show/{{message.from_user.id}}">{{message.from_user.first_name}} {{message.from_user.last_name}}</a> wrote:
-                    </h5>
+                <h6 class="post_header">
+                    <a href="/users/show/{{message.from_user.id}}">{{message.from_user.first_name}} {{message.from_user.last_name}}</a> wrote:
                     <span class="posted_at">{{ message.created_at }}</span>
-                    <p>{{ message.message }}</p>
-                    <div class="comments">
-                        {% for comment in comment_data %}
-                            {% if comment.message.id == message.id %}
-                            <h5>
-                                <a href="/users/show/{{comment.user.id}}">{{ comment.user.first_name }} {{ comment.user.last_name }}</a> wrote:
-                            </h5>
-                            <span class="posted_at">{{ comment.created_at }}</span>
-                            <p>{{ comment.comment }}</p>
-                            {% endif %}
-                        {% endfor %}
-                        <div class="post_comment">
-                            <form action="/comment/{{user.id}}/{{message.id}}" method="post">
-                                {% csrf_token %}
-                                <textarea name="comment" placeholder="Write a comment"></textarea>
-                                <input type="submit" value="Post">
-                            </form>
-                        </div>
-                    </div>
-                    {% endfor %}
-                {% endif %}
+                </h6>
+                <p>{{ message.message }}</p>
             </div>
-    
-
+            {% for comment in comment_data %}
+                {% if comment.message.id == message.id %}
+                <div class="show_comments">
+                    <h6 class="post_header">
+                        <a href="/users/show/{{comment.user.id}}">{{ comment.user.first_name }} {{ comment.user.last_name }}</a> wrote:
+                        <span class="posted_at">{{ comment.created_at }}</span>
+                    </h6>
+                    <p>{{ comment.comment }}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+            <div class="post_comment">
+                <form action="/comment/{{user.id}}/{{message.id}}" method="post">
+                    {% csrf_token %}
+                    <textarea name="comment" placeholder="Write a comment"></textarea>
+                    <div class="text-right">
+                        <input type="submit" value="Post" class="post">
+                    </div>
+                </form>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </body>

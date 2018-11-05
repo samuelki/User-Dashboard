@@ -18,7 +18,12 @@ def dashboard(request):
     if 'id' not in request.session:
         return redirect('/')
 
-    return render(request, 'users/dashboard.html', {'user_data': User.objects.all()})
+    context = {
+        'logged_user': User.objects.get(id=request.session['id']),
+        'user_data': User.objects.all()
+    }
+
+    return render(request, 'users/dashboard.html', context)
 
 def dashboard_admin(request):
     return render(request, 'users/dashboard_admin/html', {'user_data': User.objects.all()})
@@ -28,7 +33,8 @@ def show(request, id):
     context = {
         'user': user,
         'message_data': Message.objects.filter(for_user=user),
-        'comment_data': Comment.objects.all()
+        'comment_data': Comment.objects.all(),
+        'logged_user': User.objects.get(id=request.session['id'])
     }
 
     return render(request, 'users/profile.html', context)
@@ -76,7 +82,8 @@ def logout(request):
 
 def edit(request, id):
     context = {
-        'user_data': User.objects.filter(id=id)
+        'user_data': User.objects.filter(id=id),
+        'logged_user': User.objects.get(id=request.session['id'])
     }
     return render(request, 'users/edit.html', context)
 
@@ -116,7 +123,10 @@ def edit_users(request):
 
 def destroy(request, id):
     user = User.objects.get(id=id)
-    context = {'user': user}
+    context = {
+        'user': user,
+        'logged_user': User.objects.get(id=request.session['id'])    
+    }
     return render(request, 'users/confirm_delete.html', context)
 
 def delete(request, id):

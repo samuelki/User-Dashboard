@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="" href="{% static 'users/css/style.css' %}">
 </head>
 <body>
-    <nav class="navbar navigate">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark navigate">
         <div class="container justify-content-between">
-            <h4>User Dashboard</h4>
+            <h4 style="color: white">User Dashboard</h4>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
@@ -42,26 +42,28 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="first_name">First name:</label>
-                        <input type="text" name="first_name" value="{{ request.session.first_name }}" class="form-control">
+                        <input type="text" name="first_name" class="form-control" placeholder="John">
                     </div>
                     <div class="form-group">
                         <label for="last_name">Last name:</label>
-                        <input type="text" name="last_name" value="{{ request.session.last_name }}" class="form-control">
+                        <input type="text" name="last_name" value="{{ request.session.last_name }}" class="form-control" placeholder="Smith">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" value="{{ request.session.email }}" class="form-control">
+                        <label for="email">Email Address:</label>
+                        <input type="text" name="email" value="{{ request.session.email }}" class="form-control" placeholder="JohnSmith@test.com">
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" name="password" value="{{ request.session.password }}" class="form-control">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <label for="confirm_pw">Confirm password:</label>
-                        <input type="password" name="confirm_pw" value="{{ request.session.confirm_pw }}" class="form-control">
+                        <label for="confirm_pw">Confirm Password:</label>
+                        <input type="password" name="confirm_pw" class="form-control" placeholder="Confirm Password">
                     </div>
                     <input type="submit" value="Register" class="btn">
                 </form>
+                <br>
+                <a href="/login">Already have an account? Login</a>
             </div>
             <div class="col">
                 {% if messages %}
